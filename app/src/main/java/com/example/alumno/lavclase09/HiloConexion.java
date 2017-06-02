@@ -25,13 +25,17 @@ public class HiloConexion implements Runnable {
 
         try{
 
-            String s = new String(miConexion.getXmlByGet("http://www.lslutnfra.com/alumnos/practicas/listaPersonas.xml"));
-            miMensaje.obj = XmlParser.obtenerPersonas(s);
+            //String s = new String(miConexion.getXmlByGet("http://www.lslutnfra.com/alumnos/practicas/listaPersonas.xml")); //Para traer un xml
+            String s = new String(miConexion.getXmlByGet("http://192.168.2.103:3000/usuarios/"));
+            //miMensaje.obj = XmlParser.obtenerPersonas(s); // para traer lista de persona por xml
+
+            miMensaje.obj = JasonPar.parcers(s);
 
 
             h.sendMessage(miMensaje);
         }
         catch (Exception e){
+
             e.printStackTrace();
         }
     }
